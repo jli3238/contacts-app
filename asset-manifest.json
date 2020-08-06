@@ -1,23 +1,22 @@
 {
   "files": {
     "main.css": "/contacts-app/static/css/main.5f361e03.chunk.css",
-    "main.js": "/contacts-app/static/js/main.92d6428d.chunk.js",
-    "main.js.map": "/contacts-app/static/js/main.92d6428d.chunk.js.map",
+    "main.js": "/contacts-app/static/js/main.0ee36c7f.chunk.js",
+    "main.js.map": "/contacts-app/static/js/main.0ee36c7f.chunk.js.map",
     "runtime-main.js": "/contacts-app/static/js/runtime-main.02f0ece6.js",
     "runtime-main.js.map": "/contacts-app/static/js/runtime-main.02f0ece6.js.map",
-    "static/js/2.4e84fd00.chunk.js": "/contacts-app/static/js/2.4e84fd00.chunk.js",
-    "static/js/2.4e84fd00.chunk.js.map": "/contacts-app/static/js/2.4e84fd00.chunk.js.map",
+    "static/js/2.dba34e29.chunk.js": "/contacts-app/static/js/2.dba34e29.chunk.js",
+    "static/js/2.dba34e29.chunk.js.map": "/contacts-app/static/js/2.dba34e29.chunk.js.map",
     "index.html": "/contacts-app/index.html",
-    "precache-manifest.19d14b46e45fda2de4e5b21e9e3259a3.js": "/contacts-app/precache-manifest.19d14b46e45fda2de4e5b21e9e3259a3.js",
+    "precache-manifest.d9b2d253d58204205738d17d6c1d7426.js": "/contacts-app/precache-manifest.d9b2d253d58204205738d17d6c1d7426.js",
     "service-worker.js": "/contacts-app/service-worker.js",
     "static/css/main.5f361e03.chunk.css.map": "/contacts-app/static/css/main.5f361e03.chunk.css.map",
-    "static/js/2.4e84fd00.chunk.js.LICENSE.txt": "/contacts-app/static/js/2.4e84fd00.chunk.js.LICENSE.txt",
-    "static/media/logo.svg": "/contacts-app/static/media/logo.5d5d9eef.svg"
+    "static/js/2.dba34e29.chunk.js.LICENSE.txt": "/contacts-app/static/js/2.dba34e29.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.02f0ece6.js",
-    "static/js/2.4e84fd00.chunk.js",
+    "static/js/2.dba34e29.chunk.js",
     "static/css/main.5f361e03.chunk.css",
-    "static/js/main.92d6428d.chunk.js"
+    "static/js/main.0ee36c7f.chunk.js"
   ]
 }
