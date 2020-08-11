@@ -1,22 +1,28 @@
 {
   "files": {
-    "main.css": "/contacts-app/static/css/main.5f361e03.chunk.css",
-    "main.js": "/contacts-app/static/js/main.0ee36c7f.chunk.js",
-    "main.js.map": "/contacts-app/static/js/main.0ee36c7f.chunk.js.map",
-    "runtime-main.js": "/contacts-app/static/js/runtime-main.02f0ece6.js",
-    "runtime-main.js.map": "/contacts-app/static/js/runtime-main.02f0ece6.js.map",
-    "static/js/2.dba34e29.chunk.js": "/contacts-app/static/js/2.dba34e29.chunk.js",
-    "static/js/2.dba34e29.chunk.js.map": "/contacts-app/static/js/2.dba34e29.chunk.js.map",
+    "main.css": "/contacts-app/static/css/main.3aec9459.chunk.css",
+    "main.js": "/contacts-app/static/js/main.c43c976e.chunk.js",
+    "main.js.map": "/contacts-app/static/js/main.c43c976e.chunk.js.map",
+    "runtime-main.js": "/contacts-app/static/js/runtime-main.f4a2bb2c.js",
+    "runtime-main.js.map": "/contacts-app/static/js/runtime-main.f4a2bb2c.js.map",
+    "static/js/2.6088a733.chunk.js": "/contacts-app/static/js/2.6088a733.chunk.js",
+    "static/js/2.6088a733.chunk.js.map": "/contacts-app/static/js/2.6088a733.chunk.js.map",
+    "static/js/3.73cfcda4.chunk.js": "/contacts-app/static/js/3.73cfcda4.chunk.js",
+    "static/js/3.73cfcda4.chunk.js.map": "/contacts-app/static/js/3.73cfcda4.chunk.js.map",
+    "static/js/4.47a354a4.chunk.js": "/contacts-app/static/js/4.47a354a4.chunk.js",
+    "static/js/4.47a354a4.chunk.js.map": "/contacts-app/static/js/4.47a354a4.chunk.js.map",
     "index.html": "/contacts-app/index.html",
-    "precache-manifest.d9b2d253d58204205738d17d6c1d7426.js": "/contacts-app/precache-manifest.d9b2d253d58204205738d17d6c1d7426.js",
+    "precache-manifest.0cd2f11426ac9ba09a51e557ecdb93d7.js": "/contacts-app/precache-manifest.0cd2f11426ac9ba09a51e557ecdb93d7.js",
     "service-worker.js": "/contacts-app/service-worker.js",
-    "static/css/main.5f361e03.chunk.css.map": "/contacts-app/static/css/main.5f361e03.chunk.css.map",
-    "static/js/2.dba34e29.chunk.js.LICENSE.txt": "/contacts-app/static/js/2.dba34e29.chunk.js.LICENSE.txt"
+    "static/css/main.3aec9459.chunk.css.map": "/contacts-app/static/css/main.3aec9459.chunk.css.map",
+    "static/js/3.73cfcda4.chunk.js.LICENSE.txt": "/contacts-app/static/js/3.73cfcda4.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/contacts-app/static/media/checkmark.3ae13dbe.png",
+    "static/media/rdg-image.less": "/contacts-app/static/media/rdg-image.98a63106.less"
   },
   "entrypoints": [
-    "static/js/runtime-main.02f0ece6.js",
-    "static/js/2.dba34e29.chunk.js",
-    "static/css/main.5f361e03.chunk.css",
-    "static/js/main.0ee36c7f.chunk.js"
+    "static/js/runtime-main.f4a2bb2c.js",
+    "static/js/3.73cfcda4.chunk.js",
+    "static/css/main.3aec9459.chunk.css",
+    "static/js/main.c43c976e.chunk.js"
   ]
 }
