@@ -1,0 +1,13 @@
+.rdg-cell {
+  contain: strict;
+  position: absolute;
+  height: inherit;
+  padding: 0 8px;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  background-color: inherit;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/*# sourceMappingURL=cell.css.map */

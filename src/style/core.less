@@ -1,0 +1,45 @@
+@import "./variables.less";
+
+body, html {
+  font-family: Verdana;
+}
+
+.rdg {
+  border: 1px solid @borderColor;
+  box-sizing: border-box;
+  overflow-x: auto;
+  overflow-y: scroll;
+  background-color: #fff;
+  font-size: 14px;
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+}
+
+// set stacking context in safari
+@supports not (contain: strict) {
+  .rdg {
+    position: relative;
+    z-index: 0;
+  }
+}
+
+.rdg-focus-sink {
+  position: sticky;
+  top: 0;
+  left: 0;
+  height: 0;
+  width: 0;
+  outline: 0;
+}
+
+.rdg-viewport-dragging .rdg-row {
+  cursor: move;
+}
+
+.rdg-row .rdg-cell:nth-child(4) {
+  color: #005295;
+}

@@ -1,0 +1,15 @@
+.rdg-image-cell {
+  background: #efefef;
+  background-size: 100%;
+  display: inline-block;
+  height: 28px;
+  width: 28px;
+  margin-top: 8px;
+  background-position: center;
+  border-radius: 14px;
+}
+.rdg-image-cell-wrapper {
+  display: flex;
+  justify-content: left;
+}
+/*# sourceMappingURL=rdg-image.css.map */

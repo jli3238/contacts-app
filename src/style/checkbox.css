@@ -1,0 +1,42 @@
+.rdg-checkbox-label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  margin-left: 12px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.rdg-checkbox-label-disabled {
+  cursor: default;
+}
+.rdg-checkbox-label-disabled .rdg-checkbox {
+  border-color: #ccc;
+  background: #ddd;
+}
+.rdg-checkbox-input {
+  all: unset;
+  width: 0;
+  margin: 0;
+}
+.rdg-checkbox {
+  width: 16px;
+  height: 16px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  background: #fff;
+}
+.rdg-checkbox-input:checked + .rdg-checkbox {
+  background: url('../checkmark.png') no-repeat center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+.rdg-checkbox-input:focus + .rdg-checkbox {
+  border-color: #62b8ff;
+}
+/*# sourceMappingURL=checkbox.css.map */

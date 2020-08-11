@@ -1,0 +1,26 @@
+.rdg-row {
+  // contain: strict;
+  display: flex;
+  position: absolute;
+  left: 0;
+  width: var(--row-width);
+  height: var(--row-height);
+  line-height: var(--row-height);
+  border-left: 1px solid #ddd;
+  @bg: #fff;
+  background-color: @bg;
+
+  &:hover {
+    background-color: darken(@bg, 4%);
+  }
+}
+
+.rdg-row-selected {
+  @bg: #dbecfa;
+  background-color: @bg;
+
+  &:hover {
+    background-color: darken(@bg, 4%);
+  }
+}
+
