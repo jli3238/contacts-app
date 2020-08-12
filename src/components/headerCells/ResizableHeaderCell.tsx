@@ -41,7 +41,6 @@ export default function ResizableHeaderCell<R>({
 
   function onTouchStart(event: React.TouchEvent) {
     const touch = event.changedTouches[0];
-    const { identifier } = touch;
     const { currentTarget } = event;
     const { right } = currentTarget.getBoundingClientRect();
     const offset = right - touch.clientX;

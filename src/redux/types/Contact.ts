@@ -1,11 +1,13 @@
 import { Name } from './Name';
-import { ContactLists } from './ContactLists';
-import { Tag } from './Tag';
+import { Address } from '../types/Address';
+import { Deal } from '../types/Deal';
+import { ContactTag } from '../types/ContactTag';
 
 export interface Contact {
   id: number;
-  name: Name;
-  contactLists: ContactLists;
-  contactTag: Tag[];
-  deals: number[];
+  firstName: Name;
+  lastName: Name;
+  deals: Deal[];
+  contactTags: ContactTag[];
+  geoAddresses: Address;
 }

@@ -5,6 +5,7 @@ import { SelectColumn } from './Columns';
 import DataGrid, { DataGridHandle } from './DataGrid';
 import { ImageFormatter } from './formatters';
 import { AutoSizer } from 'react-virtualized';
+import { Contact } from '../redux/types/Contact';
 import faker from 'faker';
 
 interface Row {
@@ -52,19 +53,18 @@ function loadMoreRows(newRowsCount: number, length: number): Promise<Row[]> {
   });
 }
 
-export default function Contacts() {
-  const [rows, setRows] = useState<Row[]>(createRows(200));
+interface ContactsProps {
+  contactsData: Contact[];
+}
+
+export default function Contacts({ contactsData }: ContactsProps) {
+  const [rows, setRows] = useState<Row[]>(createRows(2));
   const [selectedRows, setSelectedRows] = useState(() => new Set<string>());
   const [isLoading, setIsLoading] = useState(false);
   const gridRef = useRef<DataGridHandle>(null);
 
   const columns = useMemo((): Column<Row>[] => [ 
     SelectColumn,
-    // {
-    //   key: 'id',
-    //   name: 'ID',
-    //   width: 50
-    // },
     {
       key: 'avatar',
       name: 'Contact',

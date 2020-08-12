@@ -4,16 +4,16 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
 import { logger } from 'redux-logger';
-import reducer from './redux/reducers';
-import './style/index.css';
+import rootReducer from './redux/reducers/rootReducer';
 import App from './App';
 import rootSaga from './sagas';
 import * as serviceWorker from './serviceWorker';
+import './style/index.css';
 
 const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
-  reducer,
+  rootReducer,
   applyMiddleware(sagaMiddleware, logger)
 )
 
@@ -25,7 +25,7 @@ render(
       <Provider store={store}>
         <App />
       </Provider>
-    </React.StrictMode>
+    </React.StrictMode>,
   </Suspense>,
   document.getElementById('root')
 );

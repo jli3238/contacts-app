@@ -71,18 +71,6 @@ export default function EditorContainer<R>({
     }
   });
 
-  function getInitialValue() {
-    const value = row[column.key as keyof R];
-    if (key === 'Delete' || key === 'Backspace') {
-      return '';
-    }
-    if (key === 'Enter') {
-      return value;
-    }
-
-    return key || value;
-  }
-
   function isCaretAtBeginningOfInput(): boolean {
     const inputNode = getInputNode();
     return inputNode instanceof HTMLInputElement
