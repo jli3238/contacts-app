@@ -1,4 +1,5 @@
-import constants from '../actionConstants';
+import constants from '../actionConstants/ContactsConstants';
+import { Contact } from '../types/Contact';
 
 const initialState = {
   contactList: [
@@ -22,18 +23,34 @@ const initialState = {
   error: false
 };
 
-const contactsReducer = (state = initialState, action) => {
+const contactDealsReducer = (state = initialState, action: any) => {
   switch (action.type) {
     // request
-    case constants.GET_CONTACTS:
+    case constants.GET_DEALS:
     // case constants.GET_CONTACT:
     // case constants.GET_CONTACT_DEALS:
     // case constants.GET_CONTACT_TAGS:
     // case constants.GET_CONTACT_TAG_NAME:
       return { ...state, error: false, loading: true };
     // success
-    case constants.GET_CONTACTS_SUCCESS:
-      return { ...state, contactList: action.json, error: false, loading: false };
+    case constants.GET_DEALS_SUCCESS:          
+      const contactsData : Contact[] = action.json.map((item: any) => {
+        const newContact: Contact = {
+          id: item.id,
+          firstName: item.firstName,
+          lastName: item.lastName,
+          deals: [
+          ],
+          contactTags: [],
+          geoAddresses: {
+            city: '',
+            state: '',
+            country: ''
+          }
+        };
+        return newContact;
+      });
+      return { ...state, contactList: contactsData, error: false, loading: false };
     // case constants.GET_CONTACT_SUCCESS:
     //   return { ...state, contacts: {}, error: false, loading: false };
     // case constants.GET_CONTACT_DEALS_SUCCESS:
@@ -47,4 +64,4 @@ const contactsReducer = (state = initialState, action) => {
   }
 };
 
-export default contactsReducer;
+export default contactDealsReducer;

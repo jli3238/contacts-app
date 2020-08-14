@@ -1,4 +1,4 @@
-import constants from '../actionConstants';
+import constants from '../actionConstants/ContactsConstants';
 
 export const getContacts = () => ({
   type: constants.GET_CONTACTS,

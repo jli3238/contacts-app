@@ -1,6 +1,5 @@
 import React, { useState, useMemo, useRef, useCallback } from 'react';
-import { Column, RowsUpdateEvent, CalculatedColumn } from './types';
-import { UpdateActions } from './enums';
+import { Column, CalculatedColumn } from './types';
 import { SelectColumn } from './Columns';
 import DataGrid, { DataGridHandle } from './DataGrid';
 import { ImageFormatter } from './formatters';
@@ -43,22 +42,12 @@ function isAtBottom(event: React.UIEvent<HTMLDivElement>): boolean {
   return target.clientHeight + target.scrollTop === target.scrollHeight;
 }
 
-function loadMoreRows(newRowsCount: number, length: number): Promise<Row[]> {
-  return new Promise(resolve => {
-    const newRows: Row[] = [];
-    for (let i = 0; i < newRowsCount; i++) {
-      newRows[i] = createFakeRowObjectData(i + length);
-    }
-    setTimeout(() => resolve(newRows), 1000);
-  });
-}
-
 interface ContactsProps {
   contactsData: Contact[];
 }
 
 export default function Contacts({ contactsData }: ContactsProps) {
-  const [rows, setRows] = useState<Row[]>(createRows(2));
+  const [rows] = useState<Row[]>(createRows(2));
   const [selectedRows, setSelectedRows] = useState(() => new Set<string>());
   const [isLoading, setIsLoading] = useState(false);
   const gridRef = useRef<DataGridHandle>(null);
@@ -97,26 +86,6 @@ export default function Contacts({ contactsData }: ContactsProps) {
     }
   ], []);
 
-  const handleRowUpdate = useCallback(({ fromRow, toRow, updated, action }: RowsUpdateEvent<Partial<Row>>): void => {
-    const newRows = [...rows];
-    let start: number;
-    let end: number;
-
-    if (action === UpdateActions.COPY_PASTE) {
-      start = toRow;
-      end = toRow;
-    } else {
-      start = Math.min(fromRow, toRow);
-      end = Math.max(fromRow, toRow);
-    }
-
-    for (let i = start; i <= end; i++) {
-      newRows[i] = { ...newRows[i], ...updated };
-    }
-
-    setRows(newRows);
-  }, [rows]);
-
   const handleRowClick = useCallback((rowIdx: number, row: Row, column: CalculatedColumn<Row>) => {
     if (column.key === 'title') {
       gridRef.current?.selectCell({ rowIdx, idx: column.idx }, true);
@@ -128,9 +97,6 @@ export default function Contacts({ contactsData }: ContactsProps) {
 
     setIsLoading(true);
 
-    const newRows = await loadMoreRows(50, rows.length);
-
-    setRows([...rows, ...newRows]);
     setIsLoading(false);
   }
 
@@ -144,7 +110,7 @@ export default function Contacts({ contactsData }: ContactsProps) {
               columns={columns}
               rows={rows}
               rowKey="id"
-              onRowsUpdate={handleRowUpdate}
+              // onRowsUpdate={handleRowUpdate}
               onRowClick={handleRowClick}
               rowHeight={46}
               width={width}
