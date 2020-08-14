@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Contacts from '../components/Contacts';
-import Contact from '../redux/types/Contact';
+import { Contact } from '../redux/types/Contact';
 
 const ContactsContainer = () => {
-  const [contacts, setContacts] = useState([
-    { id: "1", firstName: "fname1", lastName: "lname1" },
-    { id: "2", firstName: "fname2", lastName: "lname2" }
+  const [contacts, setContacts] = useState<Contact[]>([
+    { id: 1, firstName: "fname1", lastName: "lname1" },
+    { id: 2, firstName: "fname2", lastName: "lname2" }
   ]);
   const [hasErrors, setErrors] = useState(false);
   const contentType = 'application/json';
