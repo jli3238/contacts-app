@@ -1,5 +1,5 @@
-import React, { useState, useMemo, useRef, useCallback } from 'react';
-import { Column, CalculatedColumn } from './types';
+import React, { useState, useMemo, useRef } from 'react';
+import { Column } from './types';
 import { SelectColumn } from './Columns';
 import DataGrid, { DataGridHandle } from './DataGrid';
 import { ImageFormatter } from './formatters';
@@ -37,93 +37,66 @@ function createRows(numberOfRows: number): Row[] {
   return rows;
 }
 
-function isAtBottom(event: React.UIEvent<HTMLDivElement>): boolean {
-  const target = event.target as HTMLDivElement;
-  return target.clientHeight + target.scrollTop === target.scrollHeight;
-}
-
 interface ContactsProps {
   contactsData: Contact[];
 }
 
 export default function Contacts({ contactsData }: ContactsProps) {
-  const [rows] = useState<Row[]>(createRows(2));
+  const [rows] = useState<Row[]>(createRows(52));
   const [selectedRows, setSelectedRows] = useState(() => new Set<string>());
-  const [isLoading, setIsLoading] = useState(false);
   const gridRef = useRef<DataGridHandle>(null);
 
   const columns = useMemo((): Column<Row>[] => [ 
     SelectColumn,
     {
       key: 'avatar',
-      name: 'Contact',
+      name: '',
       width: 40,
       formatter: ({ row }) => <ImageFormatter value={row.avatar} />
     },
     {
       key: 'contact',
-      name: '',
-      width: 270
+      name: 'Contact',
+      width: 250
     },
     {
       key: 'totalValue',
       name: 'Total Value',
-      width: 150
+      width: 100
     },
     {
       key: 'location',
       name: 'Location',
-      width: 350
+      width: 400
     },
     {
       key: 'deals',
       name: 'Deals',
-      width: 50
+      width: 100
     },
     {
       key: 'tags',
       name: 'Tags',
+      width: 405
     }
   ], []);
-
-  const handleRowClick = useCallback((rowIdx: number, row: Row, column: CalculatedColumn<Row>) => {
-    if (column.key === 'title') {
-      gridRef.current?.selectCell({ rowIdx, idx: column.idx }, true);
-    }
-  }, []);
-
-  async function handleScroll(event: React.UIEvent<HTMLDivElement>) {
-    if (!isAtBottom(event)) return;
-
-    setIsLoading(true);
-
-    setIsLoading(false);
-  }
 
   return (
     <>
       <AutoSizer>
         {({ height, width }) => (
-          <>
-            <DataGrid
-              ref={gridRef}
-              columns={columns}
-              rows={rows}
-              rowKey="id"
-              // onRowsUpdate={handleRowUpdate}
-              onRowClick={handleRowClick}
-              rowHeight={46}
-              width={width}
-              height={height - 40}
-              selectedRows={selectedRows}
-              onScroll={handleScroll}
-              onSelectedRowsChange={setSelectedRows}
-              rowClass={row => row.id.includes('7') ? 'highlight' : undefined}
-              enableCellCopyPaste
-              enableCellDragAndDrop
-            />
-            {isLoading && <div className="load-more-rows-tag">Loading more rows...</div>}
-          </>
+          <DataGrid
+            ref={gridRef}
+            columns={columns}
+            rows={rows}
+            rowKey="id"
+            rowHeight={46}
+            width={width}
+            height={height - 40}
+            selectedRows={selectedRows}
+            onSelectedRowsChange={setSelectedRows}
+            rowClass={row => row.id.includes('7') ? 'highlight' : undefined}
+          />
         )}
       </AutoSizer>
     </>

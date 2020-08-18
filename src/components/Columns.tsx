@@ -8,7 +8,6 @@ export const SelectColumn: Column<any> = {
   key: 'select-row',
   name: '',
   width: 35,
-  maxWidth: 35,
   headerRenderer(props) {
     return (
       <SelectCellFormatter
@@ -23,7 +22,6 @@ export const SelectColumn: Column<any> = {
       <SelectCellFormatter
         aria-label="Select"
         tabIndex={-1}
-        isCellSelected={props.isCellSelected}
         value={props.isRowSelected}
         onChange={props.onRowSelectionChange}
       />

@@ -20,27 +20,15 @@ export default function EditorContainer<R>({
   rowHeight,
   left,
   top,
-  onCommit,
-  onCommitCancel,
   scrollLeft,
   scrollTop,
   firstEditorKeyPress: key
 }: EditorContainerProps<R>) {
   const editorRef = useRef<Editor>(null);
-  const changeCommitted = useRef(false);
-  const changeCanceled = useRef(false);
   const [isValid, setValid] = useState(true);
-  const prevScrollLeft = useRef(scrollLeft);
-  const prevScrollTop = useRef(scrollTop);
   const isUnmounting = useRef(false);
-  const onClickCapture = useClickOutside(commit);
 
   const getInputNode = useCallback(() => editorRef.current?.getInputNode(), []);
-
-  const commitCancel = useCallback(() => {
-    changeCanceled.current = true;
-    onCommitCancel();
-  }, [onCommitCancel]);
 
   useLayoutEffect(() => {
     const inputNode = getInputNode();
@@ -53,23 +41,9 @@ export default function EditorContainer<R>({
     }
   }, [getInputNode]);
 
-  // close editor when scrolling
-  useEffect(() => {
-    if (scrollLeft !== prevScrollLeft.current || scrollTop !== prevScrollTop.current) {
-      commitCancel();
-    }
-  }, [commitCancel, scrollLeft, scrollTop]);
-
   useEffect(() => () => {
     isUnmounting.current = true;
   }, []);
-
-  // commit changes when editor is closed
-  useEffect(() => () => {
-    if (isUnmounting.current && !changeCommitted.current && !changeCanceled.current) {
-      commit();
-    }
-  });
 
   function isCaretAtBeginningOfInput(): boolean {
     const inputNode = getInputNode();
@@ -107,26 +81,6 @@ export default function EditorContainer<R>({
       || (['ArrowUp', 'ArrowDown'].includes(key) && editorHasResults());
   }
 
-  function commit(): void {
-    if (!editorRef.current) return;
-    const updated = editorRef.current.getValue();
-    if (isNewValueValid(updated)) {
-      changeCommitted.current = true;
-      const cellKey = column.key;
-      onCommit({ cellKey, rowIdx, updated });
-    }
-  }
-
-  function onKeyDown(e: KeyboardEvent) {
-    if (preventDefaultNavigation(e.key)) {
-      e.stopPropagation();
-    } else if (['Enter', 'Tab', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
-      commit();
-    } else if (e.key === 'Escape') {
-      commitCancel();
-    }
-  }
-
   const className = clsx('rdg-editor-container', {
     'rdg-editor-invalid': !isValid
   });
@@ -135,9 +89,6 @@ export default function EditorContainer<R>({
     <div
       className={className}
       style={{ height: rowHeight, width: column.width, left, top }}
-      onClickCapture={onClickCapture}
-      onKeyDown={onKeyDown}
-      onContextMenu={preventDefault}
     >
     </div>
   );

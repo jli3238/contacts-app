@@ -7,30 +7,20 @@ import { DataGridProps } from './DataGrid';
 type SharedDataGridProps<R, K extends keyof R> = Pick<DataGridProps<R, K>,
   | 'rows'
   | 'onSelectedRowsChange'
-  | 'sortColumn'
-  | 'sortDirection'
-  | 'onSort'
   | 'rowKey'
 >;
 
 export interface HeaderRowProps<R, K extends keyof R> extends SharedDataGridProps<R, K> {
   allRowsSelected: boolean;
   columns: readonly CalculatedColumn<R>[];
-  lastFrozenColumnIndex: number;
-  onColumnResize: (column: CalculatedColumn<R>, width: number) => void;
 }
 
 function HeaderRow<R, K extends keyof R>({
   columns,
-  lastFrozenColumnIndex,
   rows,
   rowKey,
   onSelectedRowsChange,
   allRowsSelected,
-  onColumnResize,
-  sortColumn,
-  sortDirection,
-  onSort
 }: HeaderRowProps<R, K>) {
   const handleAllRowsSelectionChange = useCallback((checked: boolean) => {
     if (!onSelectedRowsChange) return;
@@ -55,13 +45,8 @@ function HeaderRow<R, K extends keyof R>({
           <HeaderCell<R>
             key={column.key}
             column={column}
-            lastFrozenColumnIndex={lastFrozenColumnIndex}
-            onResize={onColumnResize}
             allRowsSelected={allRowsSelected}
             onAllRowsSelectionChange={handleAllRowsSelectionChange}
-            onSort={onSort}
-            sortColumn={sortColumn}
-            sortDirection={sortDirection}
           />
         );
       })}

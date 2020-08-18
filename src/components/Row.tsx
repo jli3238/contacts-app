@@ -2,7 +2,6 @@ import React, { memo } from 'react';
 import clsx from 'clsx';
 import Cell from './Cell';
 import { RowRendererProps } from './types';
-import { wrapEvent } from './utils';
 
 function Row<R>({
   cellRenderer: CellRenderer = Cell,
@@ -10,24 +9,15 @@ function Row<R>({
   eventBus,
   rowIdx,
   isRowSelected,
-  lastFrozenColumnIndex,
-  copiedCellIdx,
-  draggedOverCellIdx,
   row,
-  viewportColumns,
-  selectedCellProps,
-  onRowClick,
+  displayColumns,
   rowClass,
-  setDraggedOverRowIdx,
   onMouseEnter,
   top,
   'aria-rowindex': ariaRowIndex,
   'aria-selected': ariaSelected,
   ...props
 }: RowRendererProps<R>) {
-  function handleDragEnter() {
-    setDraggedOverRowIdx?.(rowIdx);
-  }
   className = clsx(
     'rdg-row',
     `rdg-row-${rowIdx % 2 === 0 ? 'even' : 'odd'}`,
@@ -42,23 +32,17 @@ function Row<R>({
       aria-rowindex={ariaRowIndex}
       aria-selected={ariaSelected}
       className={className}
-      onMouseEnter={wrapEvent(handleDragEnter, onMouseEnter)}
       style={{ top }}
       {...props}
     >
-      {viewportColumns.map(column => (
+      {displayColumns.map(column => (
         <CellRenderer
           key={column.key}
           rowIdx={rowIdx}
           column={column}
-          lastFrozenColumnIndex={lastFrozenColumnIndex}
           row={row}
-          isCopied={copiedCellIdx === column.idx}
-          isDraggedOver={draggedOverCellIdx === column.idx}
           isRowSelected={isRowSelected}
           eventBus={eventBus}
-          selectedCellProps={selectedCellProps?.idx === column.idx ? selectedCellProps : undefined}
-          onRowClick={onRowClick}
         />
       ))}
     </div>

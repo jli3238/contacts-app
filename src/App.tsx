@@ -5,5 +5,5 @@ import React from 'react';
 const ContactsContainer = React.lazy(() => import('./containers/ContactsContainer'));
 
 export default function App() {
-  return <ContactsContainer />;
+  return <ContactsContainer />
 }

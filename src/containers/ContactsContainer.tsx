@@ -14,17 +14,19 @@ const ContactsContainer = () => {
   const proxyurl = 'https://cors-anywhere.herokuapp.com/';
 
   async function fetchContactsData() {
-    const res = await fetch(proxyurl + contactsUrl, {
-      headers: {
-        "Content-Type": contentType,
-        "Api-Token": apiToken
-      }
-    });
-    res
-      .json()
-      .then((response) => setContacts(response.contacts))
-      .catch((error) => setErrors(error));
+    // const res = await fetch(proxyurl + contactsUrl, {
+    //   headers: {
+    //     "Content-Type": contentType,
+    //     "Api-Token": apiToken
+    //   }
+    // });
+    // res
+    //   .json()
+    //   .then((response) => setContacts(response.contacts))
+    //   .catch((error) => setErrors(error));
   }
+
+  console.log(contacts);
 
   async function fetchContactData() {
     const res = await fetch(proxyurl + contactsUrl, {
@@ -47,7 +49,10 @@ const ContactsContainer = () => {
   
   }, []);
 
-  return <Contacts contactsData={contacts}/>;
+  return <>
+    <Contacts contactsData={contacts}/>
+    {hasErrors && <div>There is error while loading data.</div>}
+    </>
 }
 
 export default ContactsContainer;
