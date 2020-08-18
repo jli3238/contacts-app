@@ -5,8 +5,8 @@ html {
 .rdg {
   border: 1px solid #ddd;
   box-sizing: border-box;
-  overflow-x: auto;
-  overflow-y: scroll;
+  overflow-x: hidden;
+  overflow-y: hidden;
   background-color: #fff;
   font-size: 14px;
 }
@@ -34,5 +34,8 @@ html {
 }
 .rdg-row .rdg-cell:nth-child(4) {
   color: #005295;
+}
+.data-loading-error {
+  display: fixed;
 }
 /*# sourceMappingURL=core.css.map */
